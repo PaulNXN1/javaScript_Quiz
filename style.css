@@ -3,3 +3,9 @@
     align-items: center;
     background: lightgrey;
 }
+
+
+.hideME {
+    display: hidden;
+
+}
