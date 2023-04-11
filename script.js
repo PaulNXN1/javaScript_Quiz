@@ -15,7 +15,7 @@ var questions = [
     {
 
         questionTitle: "What is an Array?" , 
-        answerKey: ["1" , "Lowercase Letter" , "$" , "A JS property that allows you to store multiple values in a single variable"],
+        answerKey: ["Another variable" , "Lowercase Letter" , "$" , "A JS property that allows you to store multiple values in a single variable"],
         correctAnswer: [3]
 
     },
@@ -50,6 +50,7 @@ var answerFeedback = document.getElementById("answerFeedback");
 var secondsRemaining = 50;
 var header = document.getElementById("header");
 var nav1 = document.getElementById("nav1");
+var questionIndex = 0;
 
 
 
@@ -71,11 +72,19 @@ function startTime() {
     }
     },1000)}
 
+    //Starting Question 1
+
 button.addEventListener("click", function() {
 
-    //timer
-    //Start Question 1
-    //Hide all other text
+    
+    questions[0].questionTitle
+
+    for (i = 0; i < answerKey; i++) {
+
+    }
+
+
+
     startTime();
     header.classList.add("hideMe")
     nav1.setAttribute("class" , "hideMe")
