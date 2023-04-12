@@ -1,22 +1,37 @@
-* nav {
+body {
+background-color: skyblue;
+}
+
+#nav1 {
 
     align-items: center;
     background: lightgrey;
+    font-family: Verdana, sans-serif;
+}
+
+#button {
+
+    font-family: Verdana, sans-serif;
+    background-color: aliceblue;
 }
 
 
-.hideME {
-    display: hidden;
+.hideMe {
+    display: none;
 
 }
 
 #nav1 {
-    width: 450px;
-    border-radius: 13%;
+    width: 500px;
+    height: 55px;
+    border-radius: auto;
+    align-items: center;
+    background-color: bisque;
     
 
 }
 
 #header {
     align-content: center;
+    font-family: Verdana, sans-serif;
 }

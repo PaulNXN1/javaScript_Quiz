@@ -1,6 +1,10 @@
-// Step 1: Create first prompt
+// Create first prompt.  This will appear each time when the page is loaded.  
 
 alert("Hello and Welcome to our JS Quiz");
+
+// Creating an array for the 4 multiple choice questions. 
+// Referencing the variable "questions" for the array of questions. 
+// correctAnswer - the property in the object for the correct answer [via index]
 
 var questions = [
 
@@ -24,7 +28,7 @@ var questions = [
     {
 
         questionTitle: "How does 10 differ from '10' ?" , 
-        answerKey: ["1" , "Lowercase Letter" , "One is a string, one a number" , "Uppercase"],
+        answerKey: ["They are the same!" , "They are from different coding languaages." , "One is a string, one an integer" , "The first is undefined."],
         correctAnswer: [2]
 
 
@@ -34,12 +38,15 @@ var questions = [
     {
 
         questionTitle: "What is the purpose of an object?" , 
-        answerKey: ["1" , "Lowercase Letter" , "Storing a TON" , "Uppercase"],
+        answerKey: ["The full DOM" , "A Lowercase Letter" , "A 'storage bin' for properties." , "Another name for a variable."],
         correctAnswer: [2]
 
     }
 
 ];
+
+// List of variables to execute all the functions.  
+// All variables below "sourced" or attached to the classes / ids from the HTML file. 
 
 var button = document.getElementById("button");
 var timer = document.getElementById("timer");
@@ -54,34 +61,34 @@ var questionIndex = 0;
 
 
 
+button.addEventListener("click", function(startTime) {
+
+        var timerLog = setInterval.function() {
+            secondsRemaining--;
+            timeLeft.textContent = secondsRemaining;
+        
+        if(secondsRemaining === 0) {
+            clearInterval(timerLog);
+            timeIsUp();
+    
+        
+        },1000)
+
+
+)}
+
 function timeIsUp(){
     timeLeft.textContent = "Time is up!"
 }
 
 
-function startTime() {
 
-    var timerLog = setInterval(function() {
-        secondsRemaining--;
-        timeLeft.textContent = secondsRemaining;
-    
-    if(secondsRemaining === 0) {
-        clearInterval(timerLog);
-        timeIsUp();
 
-    }
-    },1000)}
+
 
     //Starting Question 1
 
-button.addEventListener("click", function() {
 
-    
-    questions[0].questionTitle
-
-    for (i = 0; i < answerKey; i++) {
-
-    }
 
 
 
@@ -90,7 +97,8 @@ button.addEventListener("click", function() {
     nav1.setAttribute("class" , "hideMe")
     button.setAttribute("class" , "hideMe")
 
-})
+
+
 
 
 
