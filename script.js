@@ -10,8 +10,13 @@ var questions = [
 
     {
         questionTitle: "Which item below cannot start the name of a variable?" , 
-        answerKey: ["1" , "Lowercase Letter" , "$" , "Uppercase"],
-        correctAnswer: [0]
+
+        answerKey: [
+           { text: "1" , correct: true},  
+           { text: "Lowercase Letter" , correct: false },
+           { text: "$" , correct: false},
+           { text: "Uppercase" , correct: false}
+        ],
      
     },
 
@@ -19,8 +24,16 @@ var questions = [
     {
 
         questionTitle: "What is an Array?" , 
-        answerKey: ["Another variable" , "Lowercase Letter" , "$" , "A JS property that allows you to store multiple values in a single variable"],
-        correctAnswer: [3]
+
+        answerKey: [
+            { text: "Only symbols" , correct: false},
+            { text: "A Lowercase Letter" , correct: false},
+            { text: "A fraction" , correct: false},
+            { text: "A JS property that allows you to store multiple values in a single variable" , correct: true}
+
+
+                ],
+
 
     },
 
@@ -28,9 +41,18 @@ var questions = [
     {
 
         questionTitle: "How does 10 differ from '10' ?" , 
-        answerKey: ["They are the same!" , "They are from different coding languaages." , "One is a string, one an integer" , "The first is undefined."],
-        correctAnswer: [2]
 
+        answerKey: [
+            
+            { text: "They are the same!" , correct: false},
+            { text: "They are from different coding languages" , correct: false},
+            
+            { text: "One is a string, one an integer" , correct: true},
+            
+            { text: "The first is undefined." , correct: false}
+        
+        ],
+      
 
     },
 
@@ -38,8 +60,15 @@ var questions = [
     {
 
         questionTitle: "What is the purpose of an object?" , 
-        answerKey: ["The full DOM" , "A Lowercase Letter" , "A 'storage bin' for properties." , "Another name for a variable."],
-        correctAnswer: [2]
+
+
+        answerKey: [
+            { text: "The full DOM" , correct: false},
+            { text: "A Lowercase Letter" , correct: false},
+            { text: "A 'storage bin' for properties." , correct: true},
+            { text:  "Another name for a variable." , correct: false}  
+        
+        ],
 
     }
 
@@ -54,48 +83,79 @@ var timeLeft = document.getElementById("timeLeft");
 var questionTitle = document.getElementById("questionTitle");
 var questionPlaceholder = document.getElementById("questionPlaceholder");
 var answerFeedback = document.getElementById("answerFeedback");
-var secondsRemaining = 50;
+var secondsRemaining = 5;
 var header = document.getElementById("header");
 var nav1 = document.getElementById("nav1");
-var questionIndex = 0;
+var questionIndex;
+var mixQuestions;
+var timerID;
 
 
 
-button.addEventListener("click", function(startTime) {
+// button.addEventListener("click", function() {
+//    setInterval(timerStart,1000) 
 
-        var timerLog = setInterval.function() {
-            secondsRemaining--;
-            timeLeft.textContent = secondsRemaining;
+
+//})
+
+
+button.addEventListener("click", startQuiz);
+
+ function startQuiz() {
+        timerID = setInterval(timerStart, 1000);
+        //questionTitle.classList.remove("hide");
+        //mixQuestions = questions.sort(() => Math.random() - .5)
+        //questionIndex = 0;
         
-        if(secondsRemaining === 0) {
-            clearInterval(timerLog);
-            timeIsUp();
+
+        timerStart();
+        showQuestion();
+  }
+
+    function timerStart(){
+
+        secondsRemaining--;
+        timeLeft.textContent = secondsRemaining;
     
-        
-        },1000)
+        if (secondsRemaining === 0){
+            timeLeft.textContent = "Time is UP!";
+            
+        } 
+        if (secondsRemaining < 0) {
+            timeLeft.textContent = "All done!";
+        }
+        header.classList.add("hideMe")
+        nav1.setAttribute("class" , "hideMe")
+        button.setAttribute("class" , "hideMe")
 
+        }
 
-)}
+// Function to create or move on to the next question. 
 
-function timeIsUp(){
-    timeLeft.textContent = "Time is up!"
+function nextQuestion() {
+    resetState();
+    displayQuestion(mixQuestions[questionIndex]);
+
 }
 
+// Displaying the questions
+
+function showQuestion(){
+
+    questionTitle.innerText = question.questions
+    question.answerKey.forEach(answerKey => {
+
+        var newButton = document.createElement("button")
+        button.innerText = answerKey.textContent
+    }
+        
+        
+        )
 
 
 
+}
 
-
-    //Starting Question 1
-
-
-
-
-
-    startTime();
-    header.classList.add("hideMe")
-    nav1.setAttribute("class" , "hideMe")
-    button.setAttribute("class" , "hideMe")
 
 
 
