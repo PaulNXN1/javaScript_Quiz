@@ -4,7 +4,7 @@ alert("Hello and Welcome to our JS Quiz");
 
 // Creating an array for the 4 multiple choice questions. 
 // Referencing the variable "questions" for the array of questions. 
-// correctAnswer - the property in the object for the correct answer [via index]
+// answerKey - the property in the object for the correct answer [via index]
 
 var questions = [
 
@@ -91,24 +91,24 @@ var timerID;
 
 
 
-// button.addEventListener("click", function() {
-//    setInterval(timerStart,1000) 
-
-
-//})
-
 
 button.addEventListener("click", startQuiz);
 
  function startQuiz() {
         timerID = setInterval(timerStart, 1000);
-        //questionTitle.classList.remove("hide");
-        //mixQuestions = questions.sort(() => Math.random() - .5)
-        //questionIndex = 0;
+     
+        
+        showQuestion();
+        timerStart();
         
 
-        timerStart();
-        showQuestion();
+        for (var i = 0; i < questions.length; i++) {
+
+            questions[0].textContent
+        }
+
+
+
   }
 
     function timerStart(){
@@ -140,10 +140,7 @@ function nextQuestion() {
 // Displaying the questions
 
 function showQuestion(){
-
-    questionTitle.innerText = questions.questionTitle;
-   
-
+  
 
 }
 
