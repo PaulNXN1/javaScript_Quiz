@@ -34,7 +34,6 @@ var questions = [
 
                 ],
 
-
     },
 
 
@@ -142,16 +141,8 @@ function nextQuestion() {
 
 function showQuestion(){
 
-    questionTitle.innerText = question.questions
-    question.answerKey.forEach(answerKey => {
-
-        var newButton = document.createElement("button")
-        button.innerText = answerKey.textContent
-    }
-        
-        
-        )
-
+    questionTitle.innerText = questions.questionTitle;
+   
 
 
 }
