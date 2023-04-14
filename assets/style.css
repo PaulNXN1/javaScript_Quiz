@@ -2,6 +2,9 @@
 background-color: skyblue;
 }
 
+/*CSS Styling*/
+
+
 #nav1 {
 
     align-items: center;
@@ -16,6 +19,7 @@ background-color: skyblue;
 }
 
 
+/*This will hide the question once the function starts*/
 .hideMe {
     display: none;
 

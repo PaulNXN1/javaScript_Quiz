@@ -85,11 +85,11 @@ var answerFeedback = document.getElementById("answerFeedback");
 var secondsRemaining = 5;
 var header = document.getElementById("header");
 var nav1 = document.getElementById("nav1");
-var questionIndex;
+var questionIndex = 0;
 var mixQuestions;
 var timerID;
 
-
+//Initial phase of the program.
 
 
 button.addEventListener("click", startQuiz);
@@ -97,17 +97,11 @@ button.addEventListener("click", startQuiz);
  function startQuiz() {
         timerID = setInterval(timerStart, 1000);
      
+        questionTitle.textContent = questions[0].questionTitle;
+        answerKey.textContent = questions[0 , answerKey.text];
+
         
-        showQuestion();
         timerStart();
-        
-
-        for (var i = 0; i < questions.length; i++) {
-
-            questions[0].textContent
-        }
-
-
 
   }
 
@@ -131,9 +125,20 @@ button.addEventListener("click", startQuiz);
 
 // Function to create or move on to the next question. 
 
+var newButton = document. createElement("button");
+
+newButton. innerHTML = [answerKey[questionIndex].text];
+var body = document. getElementsByTagName("body1");
+body.appendChild(newButton);
+
+
+
+
+
 function nextQuestion() {
-    resetState();
-    displayQuestion(mixQuestions[questionIndex]);
+
+    questionTitle.textContent = questions[questionIndex + 1].questionTitle
+    newButton.textContent = "1";
 
 }
 
