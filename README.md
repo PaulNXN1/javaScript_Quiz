@@ -32,3 +32,5 @@ Below is an example image of the final project:
 ## Deployment
 URL to Deployed Project:
 
+https://paulnxn1.github.io/javaScript_Quiz/
+
