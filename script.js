@@ -80,75 +80,120 @@ var button = document.getElementById("button");
 var timer = document.getElementById("timer");
 var timeLeft = document.getElementById("timeLeft");
 var questionTitle = document.getElementById("questionTitle");
-var questionPlaceholder = document.getElementById("questionPlaceholder");
+var answerButtons = document.getElementById("questionPlaceholder");
+
 var answerFeedback = document.getElementById("answerFeedback");
-var secondsRemaining = 5;
+var secondsRemaining = 50;
 var header = document.getElementById("header");
 var nav1 = document.getElementById("nav1");
 var questionIndex = 0;
 var mixQuestions;
 var timerID;
+var scoreEl = document.getElementById("score");
+
+
 
 //Initial phase of the program.
 
 
 button.addEventListener("click", startQuiz);
 
- function startQuiz() {
-        timerID = setInterval(timerStart, 1000);
-     
-        questionTitle.textContent = questions[0].questionTitle;
-        answerKey.textContent = questions[0 , answerKey.text];
-
+function startQuiz() {
         
-        timerStart();
+showQuestion();
+timerStart();
+
+        header.classList.add("hideMe")
+        nav1.setAttribute("class" , "hideMe")
+        button.setAttribute("class" , "hideMe")
 
   }
 
+
+
     function timerStart(){
 
-        secondsRemaining--;
+        timerID = setInterval(function(){
+        
         timeLeft.textContent = secondsRemaining;
+        secondsRemaining--;
     
         if (secondsRemaining === 0){
             timeLeft.textContent = "Time is UP!";
+            clearInterval(timerID);
             
         } 
         if (secondsRemaining < 0) {
             timeLeft.textContent = "All done!";
         }
-        header.classList.add("hideMe")
-        nav1.setAttribute("class" , "hideMe")
-        button.setAttribute("class" , "hideMe")
 
-        }
-
-// Function to create or move on to the next question. 
-
-var newButton = document. createElement("button");
-
-newButton. innerHTML = [answerKey[questionIndex].text];
-var body = document. getElementsByTagName("body1");
-body.appendChild(newButton);
+        }, 1000)
+        };
 
 
 
 
+        
 
-function nextQuestion() {
 
-    questionTitle.textContent = questions[questionIndex + 1].questionTitle
-    newButton.textContent = "1";
-
-}
-
-// Displaying the questions
+// Displaying the NEXT questions
 
 function showQuestion(){
-  
+    questionTitle.textContent = questions[questionIndex].questionTitle;
+    
+    answerButtons.innerHTML = "";
 
+    for (var i = 0; i < questions[questionIndex].answerKey.length; i++){
+
+        var answerButton = document.createElement("button");
+        answerButtons.append(answerButton);
+        answerButton.textContent = questions[questionIndex].answerKey[i].text;
+        answerButton.classList.add("spacer")  
+        answerButton.setAttribute("data-correct" , `${questions[questionIndex].answerKey[i].correct}`)
+
+        console.log(questions[questionIndex].answerKey[i].correct);
+
+        answerButton.addEventListener("click", answerCheck)
+
+    }
+   
 }
 
+function endQuiz() {
+   let score = secondsRemaining;
+   scoreEl.textContent = "Here is your score: " + score;
+   answerButtons.innerHTML = " ";
+   timer.innerHTML = " ";
+    
+}
+
+function answerCheck(event){
+
+        if (event.target.dataset.correct === "true") {
+            
+        answerFeedback.textContent = "Sweet..!"
+            
+        } else {
+
+            secondsRemaining -=10;
+            answerFeedback.textContent = "No way, really?!!"
+        }
+
+        questionIndex++;
+
+        if (questionIndex < questions.length) {
+            showQuestion();
+
+        } else {
+
+        endQuiz();
+
+        
+        }
+
+        
+    
+}
 
 
 
