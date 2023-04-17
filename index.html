@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="./assets/style.css">
 </head>
 
-<body class ="body">
+<body class="body">
     <header id="header">
         <marquee>
             <h1>JavaScript Quiz</h1>
@@ -24,19 +24,28 @@
 
     <button id="button"> Click to Start Quiz & Timer </button>
 
-    <h2><p id="timer"> Time Remaining: <span id="timeLeft"></span></p></body></h2>
+    <h2>
+        <p id="timer"> Time Remaining: <span id="timeLeft"></span></p>
+</body>
+</h2>
 
+<!--Created containers to implement in JS code [to reference]-->
 
-    <div id="questionMain">
-        <h2 id="questionTitle"> </h2>
-        
-        <div id="questionPlaceholder"></div>
-    </div>
-    <h2 id="answerKey"></h2>
-    <h3 id="answerFeedback"></h3>
-    <h3 id="score"></h3>
+<div id="questionMain">
+    <h2 id="questionTitle"> </h2>
 
-    <script src="script.js"></script>
+    <div id="questionPlaceholder"></div>
+</div>
+<h2 id="answerKey"></h2>
+<h3 id="answerFeedback"></h3>
+<h3 id="score"></h3>
+
+<!--Where to add the initials at the conclusion of the quiz-->
+<p>Enter your initials below after the quiz!</p>
+<input type="text" placeholder = "Enter initials" id="scorebox"><br>
+<input type="submit" value="Submit" id="scorebox2" onclick="getInitialsScore();">
+
+<script src="script.js"></script>
 
 </body>
 

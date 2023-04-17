@@ -109,7 +109,7 @@ timerStart();
 
   }
 
-
+// This is the timer function when the program initiates. 
 
     function timerStart(){
 
@@ -190,14 +190,25 @@ function answerCheck(event){
 
         
         }
-
-        
     
 }
 
+function scoreBoard() {
 
+    if (timer.innerHTML <=50) {
 
+    document.getElementById("scorebox").textContent = "Enter your initials! ";
+    
+    }
 
+}
+
+function getScore(){
+    var finalScore = document.getElementById("scorebox2").value;
+    alert(scoreBox2);
+}
+
+getScore(); 
 
 
 
