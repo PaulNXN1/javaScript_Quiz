@@ -55,3 +55,17 @@ background-color: skyblue;
     height: 20px;
 
 }
+
+
+.card {
+    
+    background-color: bisque;
+    border: 1px solid #eceff1;
+    border-radius: 15px;
+    box-shadow: lightyellow;
+    margin: 2%;
+    margin-top: 40px;
+    padding: 15px;
+    width: 35%;
+   
+  }

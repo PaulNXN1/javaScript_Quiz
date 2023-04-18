@@ -9,64 +9,64 @@ alert("Hello and Welcome to our JS Quiz");
 var questions = [
 
     {
-        questionTitle: "Which item below cannot start the name of a variable?" , 
+        questionTitle: "Which item below cannot start the name of a variable?",
 
         answerKey: [
-           { text: "1" , correct: true},  
-           { text: "Lowercase Letter" , correct: false },
-           { text: "$" , correct: false},
-           { text: "Uppercase" , correct: false}
+            { text: "1", correct: true },
+            { text: "Lowercase Letter", correct: false },
+            { text: "$", correct: false },
+            { text: "Uppercase", correct: false }
         ],
-     
-    },
-
-
-    {
-
-        questionTitle: "What is an Array?" , 
-
-        answerKey: [
-            { text: "Only symbols" , correct: false},
-            { text: "A Lowercase Letter" , correct: false},
-            { text: "A fraction" , correct: false},
-            { text: "A JS property that allows you to store multiple values in a single variable" , correct: true}
-
-
-                ],
 
     },
 
 
     {
 
-        questionTitle: "How does 10 differ from '10' ?" , 
+        questionTitle: "What is an Array?",
 
         answerKey: [
-            
-            { text: "They are the same!" , correct: false},
-            { text: "They are from different coding languages" , correct: false},
-            
-            { text: "One is a string, one an integer" , correct: true},
-            
-            { text: "The first is undefined." , correct: false}
-        
+            { text: "Only symbols", correct: false },
+            { text: "A Lowercase Letter", correct: false },
+            { text: "A fraction", correct: false },
+            { text: "A JS property that allows you to store multiple values in a single variable", correct: true }
+
+
         ],
-      
 
     },
 
 
     {
 
-        questionTitle: "What is the purpose of an object?" , 
+        questionTitle: "How does 10 differ from '10' ?",
+
+        answerKey: [
+
+            { text: "They are the same!", correct: false },
+            { text: "They are from different coding languages", correct: false },
+
+            { text: "One is a string, one an integer", correct: true },
+
+            { text: "The first is undefined.", correct: false }
+
+        ],
+
+
+    },
+
+
+    {
+
+        questionTitle: "What is the purpose of an object?",
 
 
         answerKey: [
-            { text: "The full DOM" , correct: false},
-            { text: "A Lowercase Letter" , correct: false},
-            { text: "A 'storage bin' for properties." , correct: true},
-            { text:  "Another name for a variable." , correct: false}  
-        
+            { text: "The full DOM", correct: false },
+            { text: "A Lowercase Letter", correct: false },
+            { text: "A 'storage bin' for properties.", correct: true },
+            { text: "Another name for a variable.", correct: false }
+
         ],
 
     }
@@ -93,127 +93,110 @@ var scoreEl = document.getElementById("score");
 
 
 
+
 //Initial phase of the program.
 
+
+//Button to click to initiate
 
 button.addEventListener("click", startQuiz);
 
 function startQuiz() {
-        
-showQuestion();
-timerStart();
 
-        header.classList.add("hideMe")
-        nav1.setAttribute("class" , "hideMe")
-        button.setAttribute("class" , "hideMe")
+    showQuestion();
+    timerStart();
 
-  }
+    header.classList.add("hideMe")
+    nav1.setAttribute("class", "hideMe")
+    button.setAttribute("class", "hideMe")
+
+}
 
 // This is the timer function when the program initiates. 
 
-    function timerStart(){
+function timerStart() {
 
-        timerID = setInterval(function(){
-        
+    timerID = setInterval(function () {
+
         timeLeft.textContent = secondsRemaining;
         secondsRemaining--;
-    
-        if (secondsRemaining === 0){
+
+        if (secondsRemaining === 0) {
             timeLeft.textContent = "Time is UP!";
             clearInterval(timerID);
-            
-        } 
+
+        }
         if (secondsRemaining < 0) {
             timeLeft.textContent = "All done!";
         }
 
-        }, 1000)
-        };
-
-
-
-
-        
+    }, 1000)
+};
 
 
 // Displaying the NEXT questions
 
-function showQuestion(){
+function showQuestion() {
     questionTitle.textContent = questions[questionIndex].questionTitle;
-    
+
     answerButtons.innerHTML = "";
 
-    for (var i = 0; i < questions[questionIndex].answerKey.length; i++){
+    // How the quiz loops through the questions  
+
+    for (var i = 0; i < questions[questionIndex].answerKey.length; i++) {
 
         var answerButton = document.createElement("button");
         answerButtons.append(answerButton);
         answerButton.textContent = questions[questionIndex].answerKey[i].text;
-        answerButton.classList.add("spacer")  
-        answerButton.setAttribute("data-correct" , `${questions[questionIndex].answerKey[i].correct}`)
+        answerButton.classList.add("spacer")
+        answerButton.setAttribute("data-correct", `${questions[questionIndex].answerKey[i].correct}`)
 
         console.log(questions[questionIndex].answerKey[i].correct);
 
         answerButton.addEventListener("click", answerCheck)
 
     }
-   
+
 }
+
+// Conclusion of quiz, when tallying the score and displaying the score. 
 
 function endQuiz() {
-   let score = secondsRemaining;
-   scoreEl.textContent = "Here is your score: " + score;
-   answerButtons.innerHTML = " ";
-   timer.innerHTML = " ";
-    
+    let score = secondsRemaining;
+    scoreEl.textContent = "Here is your score: " + score;
+    answerButtons.innerHTML = " ";
+    timer.innerHTML = " ";
+
 }
 
-function answerCheck(event){
+// This function displays the response if the user is correct (true) or incorrect (false).
 
-        if (event.target.dataset.correct === "true") {
-            
+function answerCheck(event) {
+
+    if (event.target.dataset.correct === "true") {
+
         answerFeedback.textContent = "Sweet..!"
-            
-        } else {
 
-            secondsRemaining -=10;
-            answerFeedback.textContent = "No way, really?!!"
-        }
+    } else {
 
-        questionIndex++;
+        secondsRemaining -= 10;
+        answerFeedback.textContent = "No way, really?!!"
+    }
 
-        if (questionIndex < questions.length) {
-            showQuestion();
+    questionIndex++;
 
-        } else {
+    if (questionIndex < questions.length) {
+        showQuestion();
+
+    } else {
 
         endQuiz();
+       
 
-        
-        }
-    
-}
 
-function scoreBoard() {
-
-    if (timer.innerHTML <=50) {
-
-    document.getElementById("scorebox").textContent = "Enter your initials! ";
-    
     }
 
 }
-
-function getScore(){
-    var finalScore = document.getElementById("scorebox2").value;
-    alert(scoreBox2);
-}
-
-getScore(); 
-
-
-
-
-
 
 
 
