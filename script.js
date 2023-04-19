@@ -73,6 +73,30 @@ var questions = [
 
 ];
 
+var highScores = []; 
+
+
+function init(){
+   var temp = localStorage.getItem("highScores");
+   if (temp) {
+    highScores = JSON.parse(temp);
+    render();
+   }
+}
+
+init();
+
+function render(){
+    document.getElementById("finalDisplay").innerHTML = "";
+
+    for (var i = 0; i < highScores.length; i++){
+        let liEl = document.createElement("li");
+        liEl.textContent = highScores[i].name  +"-" +  highScores[i].score;
+        document.getElementById("finalDisplay").appendChild(liEl);
+        
+    }
+}
+
 // List of variables to execute all the functions.  
 // All variables below "sourced" or attached to the classes / ids from the HTML file. 
 
@@ -90,6 +114,7 @@ var questionIndex = 0;
 var mixQuestions;
 var timerID;
 var scoreEl = document.getElementById("score");
+var submitButtonScore = document.getElementById("scorebox2");
 
 
 
@@ -198,5 +223,18 @@ function answerCheck(event) {
 
 }
 
+submitButtonScore.addEventListener("click", saveScore);
 
+function saveScore(event){
+    event.preventDefault();
+
+    objScore = {
+
+        name: document.getElementById("scorebox").value,
+        score: secondsRemaining,
+    }
+    highScores.push(objScore);
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    init();
+}       
 
