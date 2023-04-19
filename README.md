@@ -24,9 +24,9 @@ The assignment is complete when all aspects of the UPENN Module #4 Acceptance Cr
 
 N/A
 
-Below is an example image of the final project:
+Below are two images of the final project:
 ![Image of Program](assets/JSExampleImage.png)
-
+![Image of Final](./assets/Final_Screen_JSQuiz.png)
 
 
 ## Deployment
