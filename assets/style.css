@@ -26,6 +26,7 @@ background-color: skyblue;
 
 }
 
+/*Top nav bar design*/
 #nav1 {
     width: 500px;
     height: 55px;
@@ -40,6 +41,7 @@ background-color: skyblue;
     align-content: center;
     font-family: Verdana, sans-serif;
 }
+
 
 #scorebox {
 
@@ -56,6 +58,7 @@ background-color: skyblue;
 
 }
 
+/*Container for initial and score log*/
 
 .card {
     
